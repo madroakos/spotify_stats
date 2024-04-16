@@ -1,0 +1,19 @@
+{
+  "name": "spotify_stats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "start:watch": "npx electronmon --trace-warnings ."
+  },
+  "author": "madroakos",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^29.3.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}
