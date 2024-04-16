@@ -46,8 +46,8 @@ function User() {
                     {user?.images?.length === 0 ?
                         <UserPicturePlaceholder/>
                         :
-                    <img className="object-cover h-24 w-24 rounded-full"
-                         src={user?.images?.at(0)?.url} alt={user?.display_name}/>
+                    <img className="object-cover h-32 w-32 rounded-full"
+                         src={user?.images?.at(user?.images.length - 1)?.url} alt={user?.display_name}/>
                     }
                     <h1 className="text-4xl mt-6">{user?.display_name}</h1>
                 </a>
