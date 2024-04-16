@@ -39,11 +39,11 @@ function App() {
         <div className="App bg-black text-white min-h-screen max-h-max">
             <header className={token ? "flex justify-between items-center p-12" : "flex flex-col items-center justify-center min-h-screen"}>
                 <div>
-                    <h1 className="font-bold text-xl sm:text-3xl md:text-4xl lg:text-5xl mb-6">Spotify Stats</h1>
+                    <h1 className="font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-6">Spotify Stats</h1>
                 </div>
                 <div className="flex">
                 {!token ?
-                    <a className="text-xl text-green-900"
+                    <a className="text-4xl sm:text-5xl md:text-6xl text-green-900"
                        href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=user-top-read`}>Login</a>
                     :
                     <button className="text-xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 text-green-900"
