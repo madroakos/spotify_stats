@@ -4,7 +4,7 @@ import User from "./User";
 import Tracks from "./Tracks";
 
 function App() {
-    const REDIRECT_URI = "http://localhost:3000";
+    const REDIRECT_URI = "https://madroakos.github.io/spotify_stats/";
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
     const RESPONSE_TYPE = "token";
 
