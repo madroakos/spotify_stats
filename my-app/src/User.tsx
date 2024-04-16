@@ -40,16 +40,16 @@ function User() {
     }, []);
 
     return (
-        <div className="flex justify-center items-center mb-12">
+        <div className="flex justify-center items-center mb-3 sm:mb-12">
             <div className="bg-zinc-900 rounded-2xl p-6">
-                <a href={user?.external_urls.spotify} className="text-2xl hover:text-gray-500 flex flex-col justify-center items-center ">
+                <a href={user?.external_urls.spotify} className="hover:text-gray-500 flex flex-col justify-center items-center ">
                     {user?.images?.length === 0 ?
                         <UserPicturePlaceholder/>
                         :
-                    <img className="object-cover h-32 w-32 rounded-full"
+                    <img className="object-cover h-16 w-16 sm:h-32 sm:w-32 rounded-full"
                          src={user?.images?.at(user?.images.length - 1)?.url} alt={user?.display_name}/>
                     }
-                    <h1 className="text-4xl mt-6">{user?.display_name}</h1>
+                    <h1 className="text-xl sm:text-4xl mt-6">{user?.display_name}</h1>
                 </a>
             </div>
         </div>

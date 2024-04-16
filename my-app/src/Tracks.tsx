@@ -50,15 +50,15 @@ function Tracks() {
     }, []);
 
     return (
-            <div className="bg-zinc-900 p-12 rounded-2xl w-full m-6">
-                <h1 className="text-4xl mb-4">Top Songs</h1>
+            <div className="bg-zinc-900 p-12 rounded-2xl w-4/5 md:w-full m-6">
+                <h1 className="text-2xl sm:text-4xl mb-4">Top Songs</h1>
                 {tracks.map(track => (
                     <div className="mb-2" key={track.id}>
                         <a className="flex items-center hover:text-gray-500"
                             href={track.external_urls.spotify}>
-                            <img className="object-cover h-24 w-24 rounded-full"
+                            <img className="object-cover h-16 w-16 lg:h-24 lg:w-24  rounded-full"
                                  src={track.album.images.sort((a, b) => a.height - b.height)[0].url} alt={track.name}/>
-                            <h2 className="text-2xl ml-4">{track.name}</h2>
+                            <h2 className="lg:text-2xl ml-4">{track.name}</h2>
                         </a>
                     </div>
                 ))}

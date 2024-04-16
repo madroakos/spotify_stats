@@ -43,15 +43,15 @@ function Artists() {
     }, []);
 
     return (
-            <div className="bg-zinc-900 p-12 rounded-2xl w-full m-6">
+            <div className="bg-zinc-900 p-12 rounded-2xl w-4/5 md:w-full m-6">
                 <h1 className="text-4xl mb-4">Top Artists</h1>
                 {artists.map(artist => (
                     <div className="mb-2" key={artist.id}>
                         <a className="flex items-center hover:text-gray-500"
                             href={artist.external_urls.spotify}>
-                            <img className="object-cover h-24 w-24 rounded-full"
+                            <img className="object-cover lg:h-24 lg:w-24 md:h-16 w-16 rounded-full"
                                  src={artist.images.sort((a, b) => a.height - b.height)[0].url} alt={artist.name}/>
-                            <h2 className="text-2xl ml-4">{artist.name}</h2>
+                            <h2 className="lg:text-2xl md:text-xl ml-4">{artist.name}</h2>
                         </a>
                     </div>
                 ))}
