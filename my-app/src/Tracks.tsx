@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-interface Artist {
+interface Track {
     id: string;
     name: string;
-    img: string;
     external_urls: {
         spotify: string;
-    };
-    images: Image[];
+    }
+    album: {
+        name: string;
+        images: Image[];
+    }
+    artists: Artist[];
 }
 
 interface Image {
@@ -17,19 +20,23 @@ interface Image {
     width: number;
 }
 
-function Artists() {
-    const token = window.localStorage.getItem("token")
-    const [artists, setArtists] = useState<Artist[]>([])
+interface Artist {
+    name: string;
+}
 
-    const fetchArtists = async () => {
+function Tracks() {
+    const token = window.localStorage.getItem("token")
+    const [tracks, setTracks] = useState<Track[]>([])
+
+    const fetchTracks = async () => {
         try {
-            const {data} = await axios.get("https://api.spotify.com/v1/me/top/artists?limit=5", {
+            const {data} = await axios.get("https://api.spotify.com/v1/me/top/tracks?limit=5", {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
             })
             console.log(data)
-            setArtists(data.items)
+            setTracks(data.items)
         } catch (error: any) {
             if (error.response && error.response.status === 401) {
                 window.localStorage.removeItem("token")
@@ -39,19 +46,19 @@ function Artists() {
     }
 
     useEffect(() => {
-        fetchArtists().then(r => r);
+        fetchTracks().then(r => r);
     }, []);
 
     return (
             <div className="bg-zinc-900 p-12 rounded-2xl w-full m-6">
-                <h1 className="text-4xl mb-4">Top Artists</h1>
-                {artists.map(artist => (
-                    <div className="mb-2" key={artist.id}>
+                <h1 className="text-4xl mb-4">Top Songs</h1>
+                {tracks.map(track => (
+                    <div className="mb-2" key={track.id}>
                         <a className="flex items-center hover:text-gray-500"
-                            href={artist.external_urls.spotify}>
+                            href={track.external_urls.spotify}>
                             <img className="object-cover h-24 w-24 rounded-full"
-                                 src={artist.images.sort((a, b) => a.height - b.height)[0].url} alt={artist.name}/>
-                            <h2 className="text-2xl ml-4">{artist.name}</h2>
+                                 src={track.album.images.sort((a, b) => a.height - b.height)[0].url} alt={track.name}/>
+                            <h2 className="text-2xl ml-4">{track.name}</h2>
                         </a>
                     </div>
                 ))}
@@ -59,4 +66,4 @@ function Artists() {
     )
 }
 
-export default Artists;
+export default Tracks;

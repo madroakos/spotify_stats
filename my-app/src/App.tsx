@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Artists from "./Artists";
 import User from "./User";
+import Tracks from "./Tracks";
 
 function App() {
     const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
@@ -53,7 +54,11 @@ function App() {
             {token ?
                 <>
                 <User/>
-                <Artists/>
+                <div className="flex justify-around items-start">
+                    <Tracks/>
+                    <Artists/>
+                </div>
+
                 </>
                 :
                 <></>
